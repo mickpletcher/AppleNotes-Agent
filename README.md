@@ -28,7 +28,12 @@ Key areas in scope include:
 
 - `prompts/NotesKeeper-Codex-Build-Prompt.md`: the build prompt that defines the project requirements and expected behavior
 - `README.md`: this project overview
+- `AGENTS.md`: repository maintenance rules for future agent work
+- `assessment.md`: current project status, gaps, risks, validation status, and next actions
+- `CHANGELOG.md`: shipped change history
 
 ## Status
 
 This repository currently captures the project definition and build prompt. It does not yet contain the implementation for the Apple Notes automation pipeline.
+
+Any repo change must update `assessment.md`. Every shipped change must be logged in `CHANGELOG.md`.
