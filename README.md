@@ -12,6 +12,10 @@ The system is intended to:
 - Export notes to a searchable Markdown vault for local or OneDrive based backup
 - Propose changes before modifying source notes
 
+## Deployment Target
+
+NotesKeeper is intended to reside on and run from the Apple Mac mini 2012 machine that has access to the source Apple Notes data.
+
 ## Project Focus
 
 The initial version is designed around reliability and auditability. It favors inspection, versioning, and history over automation that rewrites notes without review.
@@ -31,9 +35,12 @@ Key areas in scope include:
 - `AGENTS.md`: repository maintenance rules for future agent work
 - `assessment.md`: current project status, gaps, risks, validation status, and next actions
 - `CHANGELOG.md`: shipped change history
+- `GITHUB_SPEC.md`: repo structure, safety model, planned CLI, validation, and limitations
+- `future-upgrades.md`: possible upgrades grouped into three tiers
+- `completed-upgrades.md`: completed upgrades and setup work
 
 ## Status
 
-This repository currently captures the project definition and build prompt. It does not yet contain the implementation for the Apple Notes automation pipeline.
+This repository currently captures the project definition, build prompts, repo spec, assessment, and upgrade tracking. It does not yet contain the implementation for the Apple Notes automation pipeline.
 
 Any repo change must update `assessment.md`. Every shipped change must be logged in `CHANGELOG.md`.
