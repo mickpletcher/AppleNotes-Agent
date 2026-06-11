@@ -20,7 +20,7 @@ AppleNotes-Agent/
 ├── assessment.md
 ├── CHANGELOG.md
 ├── completed-upgrades.md
-├── future-upgrades.md
+├── future-upgrades.md   # local only, git-ignored
 ├── GITHUB_SPEC.md
 ├── LICENSE
 ├── README.md
@@ -28,6 +28,7 @@ AppleNotes-Agent/
 ```
 
 The `prompts/` folder is local only and ignored by Git. It will not be present after cloning.
+The `future-upgrades.md` file is also local only and ignored by Git.
 
 ## Deployment Target
 

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Upgrade Backlog Removal (2026-06-10)
+
+- Restored `future-upgrades.md` as a local only file and kept it ignored by Git so it will not be pushed.
+- Updated the repository docs to reference the local only backlog file again.
+
 ### README Expansion (2026-06-10)
 
 - Rewrote `README.md` with a full project overview: safety model, complete V1 feature descriptions, implementation guide with prompt build order table, Mac mini 2012 prerequisites, planned CLI, config reference, repository file index, and V1 non-goals.
