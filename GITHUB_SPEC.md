@@ -24,10 +24,10 @@ AppleNotes-Agent/
 ├── GITHUB_SPEC.md
 ├── LICENSE
 ├── README.md
-└── prompts/
+└── prompts/           # local only, git-ignored
 ```
 
-The `prompts/` folder is local only and ignored by Git.
+The `prompts/` folder is local only and ignored by Git. It will not be present after cloning.
 
 ## Deployment Target
 
@@ -61,7 +61,7 @@ The `prompts/` folder is local only and ignored by Git.
 
 ## Planned CLI
 
-```powershell
+```bash
 noteskeeper init
 noteskeeper scan
 noteskeeper backup
@@ -76,7 +76,7 @@ noteskeeper status
 
 Every command should support:
 
-```powershell
+```bash
 --dry-run
 --verbose
 --config ./config.yaml
@@ -84,11 +84,11 @@ Every command should support:
 
 ## Planned Validation
 
-After the Python scaffold exists, the baseline validation should be:
+After the Python scaffold exists, the baseline validation should be run on the Mac mini:
 
-```powershell
-python -m pip install -e ".[dev]"
-python -m pytest
+```bash
+python3 -m pip install -e ".[dev]"
+python3 -m pytest
 noteskeeper --help
 noteskeeper status --dry-run
 ```
@@ -100,7 +100,8 @@ Mac specific Apple Notes ingestion must also be validated on the Mac mini.
 - No executable implementation exists yet.
 - No tests exist yet.
 - Apple Notes ingestion behavior has not been validated on the Mac mini.
-- The supported macOS and Python versions are not confirmed yet.
+- The Mac mini 2012 natively supports up to macOS El Capitan (10.11). Unofficial patches may enable up to Monterey (12). El Capitan ships with Python 2.7 only. Python 3 requires a manual install. The actual macOS version must be confirmed on the machine before scaffold choices are finalized.
+- Direct SQLite access to `~/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite` is the highest-risk ingestion option because Apple's Notes schema is undocumented and changes between macOS versions. Prefer AppleScript or exported folder ingestion for V1.
 - AI, embeddings, web UI, mobile app, cloud sync, calendar creation, and reminder creation are out of V1 scope.
 
 ## Maintenance Rules

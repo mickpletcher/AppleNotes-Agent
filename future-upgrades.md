@@ -71,6 +71,48 @@ When an upgrade is completed, move it to `completed-upgrades.md` and log the cha
 - Validation needed: report generation tests and dry run CLI output.
 - Status: Pending.
 
+### Task Extraction
+
+- Purpose: Detect action items inside notes and convert them into checkbox proposed changes without creating Apple Reminders.
+- Expected files or components affected: `src/noteskeeper/processors/tasks.py`, proposed changes, review reports, tests.
+- Validation needed: action item detection tests, checkbox conversion tests, proposed change creation tests.
+- Status: Pending.
+
+### Date And Reminder Detection
+
+- Purpose: Detect dates and time-sensitive phrases in notes and surface them in the review report. No automatic Calendar or Reminders writes in V1.
+- Expected files or components affected: `src/noteskeeper/processors/dates.py`, review reports, tests.
+- Validation needed: date phrase detection tests, review report output tests.
+- Status: Pending.
+
+### Project And Category Auto-Detection
+
+- Purpose: Automatically classify notes into broad categories such as AI, Travel, Fitness, Health, Home, Work, Shopping Lists, Ideas, and Reference. Store category in SQL and Markdown frontmatter.
+- Expected files or components affected: `src/noteskeeper/processors/categories.py`, database schema, Markdown export, tests.
+- Validation needed: category detection tests, frontmatter output tests.
+- Status: Pending.
+
+### Archive Candidate Detection
+
+- Purpose: Detect notes that are likely stale or archive-safe based on age, emptiness, completed checklists, or duplicate status. Generate proposed changes only, no automatic archiving.
+- Expected files or components affected: `src/noteskeeper/processors/archive_candidates.py`, proposed changes, review reports, tests.
+- Validation needed: staleness detection tests, proposed change tests, dry run tests.
+- Status: Pending.
+
+### Link And Attachment Inventory
+
+- Purpose: Extract and store URLs, domains, file attachment names, types, and sizes from notes into the `links` and `attachments` tables.
+- Expected files or components affected: `src/noteskeeper/processors/`, database schema, tests.
+- Validation needed: URL extraction tests, attachment metadata tests.
+- Status: Pending.
+
+### Voice Dictation Cleanup
+
+- Purpose: Detect notes likely created by Siri or mobile dictation and generate proposed changes that convert unpunctuated runs into checkbox lists.
+- Expected files or components affected: `src/noteskeeper/processors/`, proposed changes, review reports, tests.
+- Validation needed: dictation detection tests, proposed change output tests, dry run tests.
+- Status: Pending.
+
 ### Guarded Apply Command
 
 - Purpose: Apply one approved change by ID only when writes are explicitly enabled.
