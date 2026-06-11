@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### End To End Build Prompt (2026-06-11)
+
+- Added `prompts/12-Build-Project-End-To-End.md` as a local orchestration prompt for running all numbered build prompts in order.
+- Updated `assessment.md` with the new prompt, validation note, and next recommended action.
+
 ### Upgrade Backlog Removal (2026-06-10)
 
 - Restored `future-upgrades.md` as a local only file and kept it ignored by Git so it will not be pushed.

@@ -20,6 +20,7 @@ The main risk is implementation validation on the Apple Mac mini 2012, because A
 
 - Added a project overview in `README.md`.
 - Added local prompt drafts under `prompts/`.
+- Added an end to end orchestration prompt at `prompts/12-Build-Project-End-To-End.md` to run the full numbered build sequence with validation and maintenance gates.
 - Added repository instructions in `AGENTS.md`.
 - Added this initial assessment file.
 - Added changelog tracking in `CHANGELOG.md`.
@@ -92,6 +93,7 @@ The main risk is implementation validation on the Apple Mac mini 2012, because A
 ## Validation Status
 
 - Verified `prompts/` is ignored by Git (`git ls-files prompts/` returns empty).
+- Added and reviewed the local only end to end build prompt for the full prompt sequence.
 - Verified the repo currently has no implementation files.
 - Verified tracked planning files now exist for repo spec, future upgrades, completed upgrades, assessment, and changelog.
 - Verified the tracked repo now documents that `assessment.md` must be updated after every repo change.
@@ -100,7 +102,8 @@ The main risk is implementation validation on the Apple Mac mini 2012, because A
 
 ## Next Recommended Action
 
-1. Run `prompts/01-Scaffold-Python-Project.md`.
-2. Keep the implementation small: package scaffold, CLI shell, config loader, logging, and pytest only.
-3. After scaffold work, update `GITHUB_SPEC.md`, `future-upgrades.md`, `completed-upgrades.md`, `assessment.md`, and `CHANGELOG.md`.
-4. Before Apple Notes ingestion work, confirm macOS and Python versions on the Apple Mac mini 2012.
+1. Run `prompts/12-Build-Project-End-To-End.md` when ready to build the full project in one controlled sequence.
+2. If building incrementally, start with `prompts/01-Scaffold-Python-Project.md`.
+3. Keep the first implementation small: package scaffold, CLI shell, config loader, logging, and pytest only.
+4. After scaffold work, update `GITHUB_SPEC.md`, `future-upgrades.md`, `completed-upgrades.md`, `assessment.md`, and `CHANGELOG.md`.
+5. Before Apple Notes ingestion work, confirm macOS and Python versions on the Apple Mac mini 2012.
