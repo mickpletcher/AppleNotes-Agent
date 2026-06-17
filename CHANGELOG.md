@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+### Python Project Scaffold (2026-06-17)
+
+- Added installable Python package metadata in `pyproject.toml`.
+- Added `config.example.yaml` with safe default settings and Apple Notes writes disabled.
+- Added `src/noteskeeper/` with CLI entry point, YAML config loader, and logging setup.
+- Added baseline pytest coverage for config loading and CLI dry run safety behavior.
+- Updated `README.md`, `GITHUB_SPEC.md`, `assessment.md`, `completed-upgrades.md`, and local `future-upgrades.md` for the scaffolded state.
+
 ### End To End Build Prompt (2026-06-11)
 
 - Added `prompts/12-Build-Project-End-To-End.md` as a local orchestration prompt for running all numbered build prompts in order.

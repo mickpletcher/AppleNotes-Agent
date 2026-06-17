@@ -8,9 +8,26 @@ NotesKeeper is a local Apple Notes organization and backup tool. It is intended 
 
 ## Current Status
 
-The repository is in planning and prompt preparation state.
+The repository has the initial Python scaffold.
 
-There is no Python implementation yet.
+Implemented:
+
+- installable `noteskeeper` package
+- `noteskeeper` CLI entry point
+- YAML config loader with safe defaults
+- logging setup
+- baseline pytest suite
+- dry run safe CLI placeholders
+
+Not implemented yet:
+
+- SQLite backup engine
+- Apple Notes ingestion
+- Markdown export
+- proposed changes system
+- processors
+- review reports
+- guarded write implementation
 
 ## Current Repo Structure
 
@@ -20,10 +37,21 @@ AppleNotes-Agent/
 ├── assessment.md
 ├── CHANGELOG.md
 ├── completed-upgrades.md
+├── config.example.yaml
 ├── future-upgrades.md   # local only, git-ignored
 ├── GITHUB_SPEC.md
 ├── LICENSE
+├── pyproject.toml
 ├── README.md
+├── src/
+│   └── noteskeeper/
+│       ├── __init__.py
+│       ├── cli.py
+│       ├── config.py
+│       └── logging_config.py
+├── tests/
+│   ├── test_cli.py
+│   └── test_config.py
 └── prompts/           # local only, git-ignored
 ```
 
@@ -60,7 +88,7 @@ The `future-upgrades.md` file is also local only and ignored by Git.
 - Log shipped repo changes in `CHANGELOG.md`.
 - Update `assessment.md` after every repo change.
 
-## Planned CLI
+## CLI
 
 ```bash
 noteskeeper init
@@ -83,23 +111,33 @@ Every command should support:
 --config ./config.yaml
 ```
 
-## Planned Validation
+Current behavior:
 
-After the Python scaffold exists, the baseline validation should be run on the Mac mini:
+- `init --dry-run` reports the config file that would be created.
+- `init` creates a starter config from `config.example.yaml` when one does not exist.
+- `status --dry-run` prints safe default runtime settings.
+- `scan`, `backup`, `export-markdown`, and `review` are dry run placeholders.
+- `apply` requires `--change-id`; non dry run apply remains blocked unless `apple_notes.allow_writes` is true.
+
+## Validation
+
+Baseline validation:
 
 ```bash
-python3 -m pip install -e ".[dev]"
-python3 -m pytest
+python -m pip install -e ".[dev]"
+python -m pytest
 noteskeeper --help
 noteskeeper status --dry-run
 ```
 
-Mac specific Apple Notes ingestion must also be validated on the Mac mini.
+On the Mac mini, use `python3` if `python` points to Python 2.
+
+Mac specific Apple Notes ingestion must still be validated on the Mac mini.
 
 ## Known Limitations
 
-- No executable implementation exists yet.
-- No tests exist yet.
+- Only the initial scaffold exists.
+- Operational commands are placeholders except `init` and `status`.
 - Apple Notes ingestion behavior has not been validated on the Mac mini.
 - The Mac mini 2012 natively supports up to macOS El Capitan (10.11). Unofficial patches may enable up to Monterey (12). El Capitan ships with Python 2.7 only. Python 3 requires a manual install. The actual macOS version must be confirmed on the machine before scaffold choices are finalized.
 - Direct SQLite access to `~/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite` is the highest-risk ingestion option because Apple's Notes schema is undocumented and changes between macOS versions. Prefer AppleScript or exported folder ingestion for V1.
@@ -110,4 +148,3 @@ Mac specific Apple Notes ingestion must also be validated on the Mac mini.
 - Keep this file current when repo structure, setup, CLI behavior, validation commands, safety rules, or limitations change.
 - Keep `assessment.md` current after every repo change.
 - Keep `future-upgrades.md`, `completed-upgrades.md`, and `CHANGELOG.md` synchronized.
-

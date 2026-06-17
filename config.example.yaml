@@ -1,0 +1,18 @@
+apple_notes:
+  read_method: applescript
+  allow_writes: false
+
+backup:
+  database_path: ./data/noteskeeper.sqlite3
+  markdown_vault_path: ~/OneDrive/NotesVault
+
+processing:
+  stale_days: 180
+  enable_ai: false
+  enable_embeddings: false
+  shopping_list_sort: alphabetical
+  preserve_originals: true
+
+review:
+  output_path: ./review
+  require_manual_approval: true

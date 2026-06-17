@@ -2,6 +2,8 @@
 
 Local Apple Notes organizer and backup tool for macOS. Reads notes safely, backs them up to SQLite, exports to Markdown, detects shopping lists and duplicates, and proposes changes for review before anything in Apple Notes is touched.
 
+Current state: the Python scaffold is in place. The package installs, the `noteskeeper` CLI starts, YAML config loading works, and baseline tests cover the safe defaults. The Apple Notes reader, database engine, Markdown export, processors, review reports, and guarded apply implementation are still pending.
+
 ---
 
 ## What It Does
@@ -225,29 +227,33 @@ Each prompt leaves the repo in a working state with passing tests before the nex
 
 The Proposed Changes System (step 05) intentionally comes before any processor (step 06 onward). All processors that generate note modification candidates depend on the proposed changes layer.
 
-### Prerequisites Before Step 01
+### Current Setup
 
-Confirm these on the Mac mini before starting:
+From the repo root:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m pytest
+noteskeeper --help
+noteskeeper status --dry-run
+```
+
+On the Mac mini, use `python3` if `python` points to Python 2.
+
+### Mac Mini Checks Before Apple Notes Ingestion
+
+Confirm these on the Mac mini before starting prompt 03:
 
 ```bash
 sw_vers                  # confirm macOS version
 python3 --version        # confirm Python 3 is installed
 ```
 
-If Python 3 is not installed, install it via Homebrew or the python.org installer before proceeding.
-
-### Validation After Step 01
-
-```bash
-python3 -m pip install -e ".[dev]"
-python3 -m pytest
-noteskeeper --help
-noteskeeper status --dry-run
-```
+If Python 3 is not installed, install it via Homebrew or the python.org installer before Apple Notes ingestion work begins.
 
 ---
 
-## Planned CLI
+## CLI
 
 ```bash
 noteskeeper init
@@ -269,6 +275,22 @@ Every command accepts:
 --verbose        # detailed output
 --config ./config.yaml
 ```
+
+Implemented now:
+
+- `noteskeeper --help`
+- `noteskeeper init --dry-run`
+- `noteskeeper status --dry-run`
+- dry run placeholders for `scan`, `backup`, `export-markdown`, and `review`
+- guarded placeholder for `apply --change-id <id>`
+
+Pending:
+
+- real Apple Notes scan
+- SQLite backup writes
+- Markdown export
+- review report generation
+- approved apply behavior
 
 ---
 
@@ -310,6 +332,10 @@ review:
 | `assessment.md` | Current project status, risks, open decisions, and next actions |
 | `CHANGELOG.md` | Shipped change history |
 | `GITHUB_SPEC.md` | Detailed repo spec, CLI reference, validation commands, and limitations |
+| `pyproject.toml` | Python package metadata, CLI entry point, and pytest settings |
+| `config.example.yaml` | Example safe default config |
+| `src/noteskeeper/` | Python package source |
+| `tests/` | Baseline pytest suite |
 | `future-upgrades.md` | Planned upgrades in three tiers |
 | `completed-upgrades.md` | Completed work with dates and validation notes |
 | `prompts/` | Local-only build prompt sequence (git-ignored, not present after cloning) |
