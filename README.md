@@ -8,7 +8,7 @@ Current state: the Python scaffold is in place. The package installs, the `notes
 
 ## What It Does
 
-NotesKeeper runs on a Mac mini 2012 that has access to the source Apple Notes library. It works in read-only mode by default. Any modification to Apple Notes requires an explicit apply command with writes enabled in the config.
+NotesKeeper runs on a Mac mini that has access to the source Apple Notes library. The minimum hardware target is the Mac mini 2012, and newer Intel or Apple Silicon Mac minis should also work when Python 3.9 or newer is installed. It works in read-only mode by default. Any modification to Apple Notes requires an explicit apply command with writes enabled in the config.
 
 Core capabilities in V1:
 
@@ -29,14 +29,18 @@ Core capabilities in V1:
 
 ---
 
-## Deployment Target
+## Compatibility Target
 
-This project runs on and is designed for the **Apple Mac mini 2012**.
+This project is designed for **Mac mini 2012 or newer**.
 
-- The Mac mini natively supports up to macOS El Capitan (10.11). With unofficial community patches it can reach Monterey (12).
-- El Capitan ships with Python 2.7 only. A separate Python 3 install is required before any scaffold work begins.
-- All Apple Notes ingestion must be validated on this machine. Development planning can happen from any OS but the tool only runs on macOS.
-- Before starting the scaffold, confirm the actual macOS version and Python version on the machine.
+- Minimum hardware target: Mac mini 2012.
+- Newer Intel Mac minis are in scope.
+- Apple Silicon Mac minis are in scope when the Python dependencies install cleanly.
+- The Mac mini 2012 natively supports up to macOS El Capitan (10.11). With unofficial community patches it can reach newer macOS releases.
+- El Capitan ships with Python 2.7 only. NotesKeeper requires Python 3.9 or newer, installed separately.
+- All Apple Notes ingestion must be validated on the target Mac because Apple Notes and AppleScript behavior can vary by macOS version.
+- Development planning can happen from any OS, but the tool only runs against Apple Notes on macOS.
+- Before Apple Notes ingestion work, confirm the actual macOS version and Python version on the target Mac.
 
 ---
 
@@ -242,14 +246,14 @@ On the Mac mini, use `python3` if `python` points to Python 2.
 
 ### Mac Mini Checks Before Apple Notes Ingestion
 
-Confirm these on the Mac mini before starting prompt 03:
+Confirm these on the target Mac mini before starting prompt 03:
 
 ```bash
 sw_vers                  # confirm macOS version
 python3 --version        # confirm Python 3 is installed
 ```
 
-If Python 3 is not installed, install it via Homebrew or the python.org installer before Apple Notes ingestion work begins.
+If Python 3.9 or newer is not installed, install it before Apple Notes ingestion work begins. On older macOS versions, Homebrew support may be limited, so the python.org installer may be the simpler path.
 
 ---
 

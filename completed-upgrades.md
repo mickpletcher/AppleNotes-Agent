@@ -6,6 +6,13 @@ When an item is completed, remove or mark it complete in `future-upgrades.md`, a
 
 ## Completed
 
+### Mac Mini Compatibility Scope
+
+- Completed: 2026-06-17.
+- Summary: Updated project compatibility from Mac mini 2012 only to Mac mini 2012 or newer, while keeping the 2012 model as the minimum hardware target.
+- Files changed: `README.md`, `GITHUB_SPEC.md`, `assessment.md`, `CHANGELOG.md`, `completed-upgrades.md`.
+- Validation performed: Reviewed compatibility references across tracked docs with repo search.
+
 ### Python Project Scaffold
 
 - Completed: 2026-06-17.

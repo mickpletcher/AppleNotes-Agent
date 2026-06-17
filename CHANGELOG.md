@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+### Mac Mini Compatibility Scope (2026-06-17)
+
+- Updated compatibility wording from Mac mini 2012 only to Mac mini 2012 or newer.
+- Documented the 2012 model as the minimum hardware target.
+- Documented newer Intel and Apple Silicon Mac minis as supported targets when Python 3.9 or newer and dependencies install cleanly.
+- Updated README, GitHub spec, and assessment risk notes for target Mac validation.
+
 ### Python Project Scaffold (2026-06-17)
 
 - Added installable Python package metadata in `pyproject.toml`.

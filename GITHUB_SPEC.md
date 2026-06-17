@@ -4,7 +4,7 @@
 
 AppleNotes-Agent is the repository for NotesKeeper.
 
-NotesKeeper is a local Apple Notes organization and backup tool. It is intended to run on the Apple Mac mini 2012 machine that has access to the source Apple Notes data.
+NotesKeeper is a local Apple Notes organization and backup tool. It is intended to run on a Mac mini that has access to the source Apple Notes data. The minimum hardware target is Mac mini 2012, with newer Intel and Apple Silicon Mac minis also in scope.
 
 ## Current Status
 
@@ -58,12 +58,16 @@ AppleNotes-Agent/
 The `prompts/` folder is local only and ignored by Git. It will not be present after cloning.
 The `future-upgrades.md` file is also local only and ignored by Git.
 
-## Deployment Target
+## Compatibility Target
 
-- Apple Mac mini 2012.
-- Apple Notes access must be validated on the Mac mini.
+- Mac mini 2012 or newer.
+- Minimum hardware target: Mac mini 2012.
+- Newer Intel Mac minis are in scope.
+- Apple Silicon Mac minis are in scope when Python dependencies install cleanly.
+- Apple Notes access must be validated on the target Mac mini.
 - Development planning can happen from Windows.
-- Runtime assumptions must be confirmed against the actual macOS and Python versions on the Mac mini before implementation choices are locked.
+- Runtime assumptions must be confirmed against the actual macOS and Python versions on the target Mac mini before implementation choices are locked.
+- NotesKeeper requires Python 3.9 or newer.
 
 ## Planned V1 Scope
 
@@ -139,7 +143,8 @@ Mac specific Apple Notes ingestion must still be validated on the Mac mini.
 - Only the initial scaffold exists.
 - Operational commands are placeholders except `init` and `status`.
 - Apple Notes ingestion behavior has not been validated on the Mac mini.
-- The Mac mini 2012 natively supports up to macOS El Capitan (10.11). Unofficial patches may enable up to Monterey (12). El Capitan ships with Python 2.7 only. Python 3 requires a manual install. The actual macOS version must be confirmed on the machine before scaffold choices are finalized.
+- The Mac mini 2012 natively supports up to macOS El Capitan (10.11). Unofficial patches may enable newer macOS releases. El Capitan ships with Python 2.7 only. Python 3.9 or newer requires a manual install. The actual macOS version must be confirmed on the target Mac before Apple Notes ingestion choices are finalized.
+- Newer Mac minis may expose different Apple Notes and AppleScript behavior depending on macOS version.
 - Direct SQLite access to `~/Library/Group Containers/group.com.apple.notes/NoteStore.sqlite` is the highest-risk ingestion option because Apple's Notes schema is undocumented and changes between macOS versions. Prefer AppleScript or exported folder ingestion for V1.
 - AI, embeddings, web UI, mobile app, cloud sync, calendar creation, and reminder creation are out of V1 scope.
 
